@@ -2,15 +2,20 @@
   "compilerOptions": {
     "rootDir": "src",
     "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
     "allowJs": true,
-    "module": "commonjs",
+    "module": "esnext",
     "alwaysStrict": true,
     "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "react",
-    "lib": ["dom", "DOM.Iterable", "es2017"],
+    "lib": [
+      "dom",
+      "DOM.Iterable",
+      "es2017"
+    ],
     "moduleResolution": "node",
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -23,9 +28,15 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext"
+    "target": "esnext",
   },
-  "exclude": ["node_modules", "build"],
+  "exclude": [
+    "node_modules",
+    "build"
+  ],
   "include": [
-    "src/**/*", "**/*.ts", "**/*.tsx"]
+    "src/**/*",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }
