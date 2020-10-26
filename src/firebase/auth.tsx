@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import app from '../firebase/base';
-export const AuthContext = React.createContext({});
+import FirebaseApp from './Base';
+
+interface ContextProps {
+  currentUser: any;
+}
+
+export const AuthContext = React.createContext<Partial<ContextProps>>({});
 
 interface Props {
   children: React.ReactNode;
@@ -11,7 +16,7 @@ export const AuthProvider = ({ children }: Props): JSX.Element => {
   const [pending, setPending] = useState(true);
 
   useEffect(() => {
-    app.auth().onAuthStateChanged((user: any) => {
+    FirebaseApp.auth().onAuthStateChanged((user: any) => {
       setCurrentUser(user);
       setPending(false);
     });
