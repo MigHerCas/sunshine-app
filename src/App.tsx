@@ -1,13 +1,19 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Home from './components/Home';
+import { AuthProvider } from './firebase/auth';
 
 function App(): JSX.Element {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Sunshine App</h1>
-      </header>
-    </div>
+    <AuthProvider>
+      <Router>
+        <div>
+          <Route exact path="/" component={Home} />
+          {/* <Route exact path="/login" component={Login} /> */}
+          {/* <Route exact path="/signup" component={SignUp} /> */}
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 
