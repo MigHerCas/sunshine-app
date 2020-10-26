@@ -11,7 +11,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const AuthProvider = ({ children }: Props): JSX.Element => {
+export const AuthProvider = ({ children }: Props): React.ReactNode => {
   const [currentUser, setCurrentUser] = useState(null);
   const [pending, setPending] = useState(true);
 

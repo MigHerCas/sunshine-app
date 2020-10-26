@@ -1,7 +1,7 @@
 import React from 'react';
 import App from '../firebase/Base';
 
-export default function Home(): JSX.Element {
+export default function Home(): React.ReactNode {
   return (
     <>
       <h1>Home</h1>
