@@ -1,9 +1,12 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { useContext } from 'react';
 import { Route, Redirect, RouteProps } from 'react-router-dom';
-import { AuthContext } from './Auth';
+import { AuthContext } from '../firebase/Auth';
 
-const PrivateRoute = ({ component: RouteComponent, ...rest }: RouteProps) => {
+const PrivateRoute = ({
+  component: RouteComponent,
+  ...rest
+}: RouteProps): JSX.Element | null => {
   const { currentUser } = useContext(AuthContext);
 
   // https://stackoverflow.com/a/57451939

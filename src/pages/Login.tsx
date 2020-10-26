@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from 'react';
 import { withRouter, Redirect, RouterProps } from 'react-router';
-import FirebaseApp from './Base';
-import { AuthContext } from './Auth';
+import FirebaseApp from '../firebase/Base';
+import { AuthContext } from '../firebase/Auth';
 import { Link } from 'react-router-dom';
 
 const Login = ({ history }: RouterProps) => {

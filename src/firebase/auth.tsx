@@ -8,10 +8,10 @@ interface ContextProps {
 export const AuthContext = React.createContext<Partial<ContextProps>>({});
 
 interface Props {
-  children: React.ReactNode;
+  children: JSX.Element;
 }
 
-export const AuthProvider = ({ children }: Props): React.ReactNode => {
+export const AuthProvider = ({ children }: Props): JSX.Element => {
   const [currentUser, setCurrentUser] = useState(null);
   const [pending, setPending] = useState(true);
 
