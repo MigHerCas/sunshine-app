@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import firebase from 'firebase';
 
 interface Props {
-  auth: any;
+  auth: firebase.auth.Auth;
 }
 
 interface SignInProps {
