@@ -20,7 +20,6 @@ const auth = firebase.auth();
 
 // Components
 import { SignIn } from './components/SignIn';
-import { SignOut } from './components/SignOut';
 
 function App(): JSX.Element {
   const [user] = useAuthState(auth);
@@ -29,11 +28,8 @@ function App(): JSX.Element {
     <div className="App">
       <header>
         <h1>⚛️🔥💬</h1>
-        <SignOut auth={auth} />
       </header>
-      {console.log(user)}
-      {/* <section>{user ? <ChatRoom /> <></> : <SignIn />}</section> */}
-      <section>{user && <SignIn auth={auth} />}</section>
+      <section>{!user && <SignIn auth={auth} />}</section>
     </div>
   );
 }
