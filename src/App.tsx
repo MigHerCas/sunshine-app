@@ -24,6 +24,7 @@ const firestore = firebase.firestore();
 // Components
 import { SignIn } from './components/SignIn';
 import { MainPanel } from './components/MainPanel';
+import ComboBox from './components/ComboBox';
 
 interface AppStateProps {
   loading: boolean;
@@ -55,6 +56,7 @@ function App(): JSX.Element {
       </header>
       <section>
         {user ? <MainPanel firestore={firestore} /> : <SignIn auth={auth} />}
+        <ComboBox />
       </section>
     </div>
   );
