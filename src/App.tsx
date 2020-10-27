@@ -1,29 +1,40 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-// Route contants
-import * as ROUTES from './constants/routes';
+// Firebase
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
+
+import { FirebaseConfig } from './firebase/config';
+
+// Firebase hooks// Firebase hooks
+import { useAuthState } from 'react-firebase-hooks/auth';
+// import { useCollectionData } from 'react-firebase-hooks/firestore';
+
+// Initialize firebase app
+firebase.initializeApp(FirebaseConfig);
+
+// Firebase global variables
+const auth = firebase.auth();
+// const firestore = firebase.firestore();
 
 // Components
-import Home from './pages/Home';
-import { AuthProvider } from './firebase/Auth';
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
-import PrivateRoute from './components/PrivateRoute';
+import { SignIn } from './components/SignIn';
+import { SignOut } from './components/SignOut';
 
 function App(): JSX.Element {
+  const [user] = useAuthState(auth);
+
   return (
-    <React.Fragment>
-      <AuthProvider>
-        <Router>
-          <nav>
-            <PrivateRoute exact path={ROUTES.HOME} component={Home} />
-            <Route exact path={ROUTES.LOGIN} component={Login} />
-            <Route exact path={ROUTES.SIGN_UP} component={SignUp} />
-          </nav>
-        </Router>
-      </AuthProvider>
-    </React.Fragment>
+    <div className="App">
+      <header>
+        <h1>⚛️🔥💬</h1>
+        <SignOut auth={auth} />
+      </header>
+      {console.log(user)}
+      {/* <section>{user ? <ChatRoom /> <></> : <SignIn />}</section> */}
+      <section>{user && <SignIn auth={auth} />}</section>
+    </div>
   );
 }
 
