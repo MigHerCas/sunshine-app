@@ -12,11 +12,11 @@ export default function ComboBox(): JSX.Element {
     options[4],
   ]);
 
-  const onChange = (selectedOptions: EuiComboBoxOptionOption[]) => {
+  const onChangeHandler = (selectedOptions: EuiComboBoxOptionOption[]) => {
     setSelected(selectedOptions);
   };
 
-  const onCreateOption = (
+  const onCreateOptionHandler = (
     searchValue: string,
     flattenedOptions: EuiComboBoxOptionOption[] = []
   ) => {
@@ -49,8 +49,8 @@ export default function ComboBox(): JSX.Element {
       placeholder="Select or create options"
       options={options}
       selectedOptions={selectedOptions}
-      onChange={onChange}
-      onCreateOption={onCreateOption}
+      onChange={onChangeHandler}
+      onCreateOption={onCreateOptionHandler}
       isClearable={true}
       data-test-subj="demoComboBox"
     />
