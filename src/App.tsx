@@ -28,17 +28,18 @@ import ComboBox from './components/ComboBox';
 
 // Types
 import { Town } from './types/types';
+import { EuiComboBoxOptionOption } from '@elastic/eui';
 
 interface AppStateProps {
   loading: boolean;
-  data: Town[];
+  searchOptions: EuiComboBoxOptionOption[];
 }
 
 function App(): JSX.Element {
   const [user] = useAuthState(auth);
   const [appState, setAppState] = useState<AppStateProps>({
     loading: false,
-    data: [],
+    searchOptions: [],
   });
 
   useEffect(() => {
@@ -47,11 +48,25 @@ function App(): JSX.Element {
     axios
       .get(apiUrl)
       .then(({ data }: AxiosResponse<Town[]>) => {
-        setAppState({ loading: false, data: data });
-        console.log(data);
+        /* We map our data array to convert it into a valid EuiComboBoxOptionOption
+         array that ComboBox can process */
+        const mappedOptions = data.map(
+          ({ NOMBRE, CODIGOINE, CODPROV }: Town): EuiComboBoxOptionOption => {
+            return {
+              label: NOMBRE,
+              key: CODIGOINE,
+              value: CODPROV,
+            };
+          }
+        );
+
+        setAppState({
+          loading: false,
+          searchOptions: mappedOptions,
+        });
       })
       .catch((error) => console.log(error));
-  }, [setAppState]);
+  }, []);
 
   return (
     <div className="App">
@@ -60,7 +75,7 @@ function App(): JSX.Element {
       </header>
       <section>
         {user ? <MainPanel firestore={firestore} /> : <SignIn auth={auth} />}
-        <ComboBox />
+        <ComboBox searchOptions={appState.searchOptions} />
       </section>
     </div>
   );

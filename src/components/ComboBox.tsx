@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { EuiComboBox, EuiComboBoxOptionOption } from '@elastic/eui';
-import { staticOptions } from '../utils/staticOptions';
 
-export default function ComboBox(): JSX.Element {
-  const [options, setOptions] = useState<EuiComboBoxOptionOption[]>(
-    staticOptions
+interface Props {
+  searchOptions: EuiComboBoxOptionOption[];
+}
+
+export default function ComboBox({ searchOptions }: Props): JSX.Element {
+  const [options, setOptions] = useState<EuiComboBoxOptionOption[]>([]);
+
+  const [selectedOptions, setSelected] = useState<EuiComboBoxOptionOption[]>(
+    []
   );
 
-  const [selectedOptions, setSelected] = useState<EuiComboBoxOptionOption[]>([
-    options[2],
-    options[4],
-  ]);
+  // Load search options when mounted
+  useEffect(() => {
+    console.log(searchOptions);
+    setOptions(searchOptions);
+  }, [searchOptions]);
 
   const onChangeHandler = (selectedOptions: EuiComboBoxOptionOption[]) => {
     setSelected(selectedOptions);
@@ -21,15 +27,12 @@ export default function ComboBox(): JSX.Element {
     flattenedOptions: EuiComboBoxOptionOption[] = []
   ) => {
     const normalizedSearchValue = searchValue.trim().toLowerCase();
-
     if (!normalizedSearchValue) {
       return;
     }
-
     const newOption = {
       label: searchValue,
     };
-
     // Create the option if it doesn't exist.
     if (
       flattenedOptions.findIndex(
@@ -39,7 +42,6 @@ export default function ComboBox(): JSX.Element {
     ) {
       setOptions([...options, newOption]);
     }
-
     // Select the option.
     setSelected([...selectedOptions, newOption]);
   };
