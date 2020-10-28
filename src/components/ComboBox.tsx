@@ -14,7 +14,6 @@ export default function ComboBox({ searchOptions }: Props): JSX.Element {
 
   // Load search options when mounted
   useEffect(() => {
-    console.log(searchOptions);
     setOptions(searchOptions);
   }, [searchOptions]);
 
