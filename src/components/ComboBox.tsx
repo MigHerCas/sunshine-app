@@ -1,47 +1,12 @@
 import React, { useState } from 'react';
-
 import { EuiComboBox, EuiComboBoxOptionOption } from '@elastic/eui';
-
-const optionsStatic = [
-  {
-    label: 'Titan',
-    'data-test-subj': 'titanOption',
-  },
-  {
-    label: 'Enceladus is disabled',
-    disabled: true,
-  },
-  {
-    label: 'Mimas',
-  },
-  {
-    label: 'Dione',
-  },
-  {
-    label: 'Iapetus',
-  },
-  {
-    label: 'Phoebe',
-  },
-  {
-    label: 'Rhea',
-  },
-  {
-    label:
-      "Pandora is one of Saturn's moons, named for a Titaness of Greek mythology",
-  },
-  {
-    label: 'Tethys',
-  },
-  {
-    label: 'Hyperion',
-  },
-];
+import { staticOptions } from '../utils/staticOptions';
 
 export default function ComboBox(): JSX.Element {
   const [options, setOptions] = useState<EuiComboBoxOptionOption[]>(
-    optionsStatic
+    staticOptions
   );
+
   const [selectedOptions, setSelected] = useState<EuiComboBoxOptionOption[]>([
     options[2],
     options[4],

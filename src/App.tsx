@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 // Constants
 import { API_URL_LIST } from './constants/constants';
@@ -26,16 +26,19 @@ import { SignIn } from './components/SignIn';
 import { MainPanel } from './components/MainPanel';
 import ComboBox from './components/ComboBox';
 
+// Types
+import { Town } from './types/types';
+
 interface AppStateProps {
   loading: boolean;
-  data: null | any;
+  data: Town[];
 }
 
 function App(): JSX.Element {
   const [user] = useAuthState(auth);
   const [appState, setAppState] = useState<AppStateProps>({
     loading: false,
-    data: null,
+    data: [],
   });
 
   useEffect(() => {
@@ -43,8 +46,9 @@ function App(): JSX.Element {
     const apiUrl = API_URL_LIST;
     axios
       .get(apiUrl)
-      .then(({ data }) => {
+      .then(({ data }: AxiosResponse<Town[]>) => {
         setAppState({ loading: false, data: data });
+        console.log(data);
       })
       .catch((error) => console.log(error));
   }, [setAppState]);
