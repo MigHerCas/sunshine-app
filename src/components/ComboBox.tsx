@@ -33,14 +33,15 @@ export default function ComboBox({ searchOptions }: Props): JSX.Element {
       label: searchValue,
     };
     // Create the option if it doesn't exist.
-    if (
-      flattenedOptions.findIndex(
-        (option: EuiComboBoxOptionOption) =>
-          option.label.trim().toLowerCase() === normalizedSearchValue
-      ) === -1
-    ) {
+    const optionExists = flattenedOptions.find(
+      ({ label }: EuiComboBoxOptionOption) =>
+        label.trim().toLowerCase() === normalizedSearchValue
+    );
+
+    if (!optionExists) {
       setOptions([...options, newOption]);
     }
+
     // Select the option.
     setSelected([...selectedOptions, newOption]);
   };
