@@ -1,13 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { EuiComboBox, EuiComboBoxOptionOption } from '@elastic/eui';
 
+// Firebase hooks
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+
+// Types
+import { Town } from '../types/types';
+
 interface Props {
   searchOptions: EuiComboBoxOptionOption[];
+  firestore: firebase.firestore.Firestore;
 }
 
-export default function ComboBox({ searchOptions }: Props): JSX.Element {
+export default function ComboBox({
+  searchOptions,
+  firestore,
+}: Props): JSX.Element {
+  const searchesRef = firestore.collection('searches');
+  const query = searchesRef.orderBy('nombre').limitToLast(25);
+  const [values, loading] = useCollectionData<Town>(query);
+
+  // Whole set of options
   const [options, setOptions] = useState<EuiComboBoxOptionOption[]>([]);
 
+  // Selected options that the user can interact with
   const [selectedOptions, setSelected] = useState<EuiComboBoxOptionOption[]>(
     []
   );
@@ -17,6 +33,11 @@ export default function ComboBox({ searchOptions }: Props): JSX.Element {
     setOptions(searchOptions);
   }, [searchOptions]);
 
+  useEffect(() => {
+    console.log(values);
+  }, [loading]);
+
+  // Handlers
   const onChangeHandler = (selectedOptions: EuiComboBoxOptionOption[]) => {
     setSelected(selectedOptions);
   };
@@ -32,12 +53,13 @@ export default function ComboBox({ searchOptions }: Props): JSX.Element {
     const newOption = {
       label: searchValue,
     };
-    // Create the option if it doesn't exist.
+
     const optionExists = flattenedOptions.find(
       ({ label }: EuiComboBoxOptionOption) =>
         label.trim().toLowerCase() === normalizedSearchValue
     );
 
+    // Create the option if it doesn't exist.
     if (!optionExists) {
       setOptions([...options, newOption]);
     }
@@ -47,14 +69,21 @@ export default function ComboBox({ searchOptions }: Props): JSX.Element {
   };
 
   return (
-    <EuiComboBox
-      placeholder="Select or create options"
-      options={options}
-      selectedOptions={selectedOptions}
-      onChange={onChangeHandler}
-      onCreateOption={onCreateOptionHandler}
-      isClearable={true}
-      data-test-subj="demoComboBox"
-    />
+    <div>
+      {/* <ul>
+        {searches?.map(({ CODIGOINE, NOMBRE }) => (
+          <li key={CODIGOINE}>{NOMBRE}</li>
+        ))}
+      </ul> */}
+      <EuiComboBox
+        placeholder="Select or create options"
+        options={options}
+        selectedOptions={selectedOptions}
+        onChange={onChangeHandler}
+        onCreateOption={onCreateOptionHandler}
+        isClearable={true}
+        data-test-subj="demoComboBox"
+      />
+    </div>
   );
 }

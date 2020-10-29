@@ -11,7 +11,7 @@ import 'firebase/auth';
 
 import { FirebaseConfig } from './firebase/config';
 
-// Firebase hooks// Firebase hooks
+// Firebase hooks
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 // Initialize firebase app
@@ -23,7 +23,7 @@ const firestore = firebase.firestore();
 
 // Components
 import { SignIn } from './components/SignIn';
-import { MainPanel } from './components/MainPanel';
+// import { MainPanel } from './components/MainPanel';
 import ComboBox from './components/ComboBox';
 
 // Types
@@ -36,7 +36,10 @@ interface AppStateProps {
 }
 
 function App(): JSX.Element {
+  // Firebase authentication
   const [user] = useAuthState(auth);
+
+  // Global appState
   const [appState, setAppState] = useState<AppStateProps>({
     loading: false,
     searchOptions: [],
@@ -74,8 +77,14 @@ function App(): JSX.Element {
         <h1>⚛️🔥💬</h1>
       </header>
       <section>
-        {user ? <MainPanel firestore={firestore} /> : <SignIn auth={auth} />}
-        <ComboBox searchOptions={appState.searchOptions} />
+        {user ? (
+          <ComboBox
+            firestore={firestore}
+            searchOptions={appState.searchOptions}
+          />
+        ) : (
+          <SignIn auth={auth} />
+        )}
       </section>
     </div>
   );
