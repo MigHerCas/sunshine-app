@@ -1,89 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { EuiComboBox, EuiComboBoxOptionOption } from '@elastic/eui';
 
-// Firebase hooks
-import { useCollectionData } from 'react-firebase-hooks/firestore';
-
-// Types
-import { Town } from '../types/types';
-
 interface Props {
-  searchOptions: EuiComboBoxOptionOption[];
-  firestore: firebase.firestore.Firestore;
+  comboBoxData: EuiComboBoxOptionOption[];
+  activeOptions: EuiComboBoxOptionOption[];
+  setActiveOptions: Dispatch<SetStateAction<EuiComboBoxOptionOption[]>>;
+  searchesRef: firebase.firestore.CollectionReference<
+    firebase.firestore.DocumentData
+  >;
 }
 
 export default function ComboBox({
-  searchOptions,
-  firestore,
+  comboBoxData,
+  activeOptions,
+  setActiveOptions,
+  searchesRef,
 }: Props): JSX.Element {
-  const searchesRef = firestore.collection('searches');
-  const query = searchesRef.orderBy('nombre').limitToLast(25);
-  const [values, loading] = useCollectionData<Town>(query);
+  const onChangeHandler = async (updatedOptions: EuiComboBoxOptionOption[]) => {
+    // Stores selected options into firestore db
+    console.log(updatedOptions);
+    console.log(searchesRef);
 
-  // Whole set of options
-  const [options, setOptions] = useState<EuiComboBoxOptionOption[]>([]);
-
-  // Selected options that the user can interact with
-  const [selectedOptions, setSelected] = useState<EuiComboBoxOptionOption[]>(
-    []
-  );
-
-  // Load search options when mounted
-  useEffect(() => {
-    setOptions(searchOptions);
-  }, [searchOptions]);
-
-  useEffect(() => {
-    console.log(values);
-  }, [loading]);
-
-  // Handlers
-  const onChangeHandler = (selectedOptions: EuiComboBoxOptionOption[]) => {
-    setSelected(selectedOptions);
-  };
-
-  const onCreateOptionHandler = (
-    searchValue: string,
-    flattenedOptions: EuiComboBoxOptionOption[] = []
-  ) => {
-    const normalizedSearchValue = searchValue.trim().toLowerCase();
-    if (!normalizedSearchValue) {
-      return;
-    }
-    const newOption = {
-      label: searchValue,
-    };
-
-    const optionExists = flattenedOptions.find(
-      ({ label }: EuiComboBoxOptionOption) =>
-        label.trim().toLowerCase() === normalizedSearchValue
-    );
-
-    // Create the option if it doesn't exist.
-    if (!optionExists) {
-      setOptions([...options, newOption]);
-    }
-
-    // Select the option.
-    setSelected([...selectedOptions, newOption]);
+    setActiveOptions(updatedOptions);
   };
 
   return (
     <div>
-      {/* <ul>
-        {searches?.map(({ CODIGOINE, NOMBRE }) => (
-          <li key={CODIGOINE}>{NOMBRE}</li>
-        ))}
-      </ul> */}
       <EuiComboBox
-        placeholder="Select or create options"
-        options={options}
-        selectedOptions={selectedOptions}
+        options={comboBoxData}
+        selectedOptions={activeOptions}
         onChange={onChangeHandler}
-        onCreateOption={onCreateOptionHandler}
         isClearable={true}
-        data-test-subj="demoComboBox"
+        data-test-subj="searchedTowns"
       />
+      {activeOptions && (
+        <ul>
+          {activeOptions.map(({ label, key, value }) => {
+            <li>
+              <span>Label: {label}</span>
+              <span>Key: {key}</span>
+              <span>value: {value}</span>
+            </li>;
+          })}
+        </ul>
+      )}
     </div>
   );
 }
