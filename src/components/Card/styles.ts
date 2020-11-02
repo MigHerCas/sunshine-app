@@ -5,7 +5,7 @@ export const Card = styled.article`
   width: 100%;
   max-width: 26rem;
   padding: 3rem;
-  background-color: $white;
+  background-color: ${({ theme }) => theme.colors.white};
 
   @media (min-width: 768px) {
     flex-basis: 26rem;
@@ -16,7 +16,7 @@ export const Card = styled.article`
   }
 
   .card__heading {
-    color: $green;
+    color: ${({ theme }) => theme.colors.green};
     margin-bottom: 1rem;
   }
 

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const H1 = styled.h1`
-  color: $white;
+  color: ${({ theme }) => theme.color.white};
   font-size: 5rem;
   line-height: 68px;
-  font-weight: $thin;
+  font-weight: ${({ theme }) => theme.fontWeight.thin};
 
   @media (min-width: 768px) {
     font-size: 6rem;
@@ -24,18 +24,18 @@ export const H1 = styled.h1`
 
 export const H2 = styled.h2`
   text-align: center;
-  font-weight: $semibold;
+  font-weight: ${({ theme }) => theme.fontWeight.semibold};
   font-size: 2.1rem;
   line-height: 27px;
-  color: $blue;
+  color: ${({ theme }) => theme.color.blue};
 
   &.neutral {
-    color: $darkGrey;
+    color: ${({ theme }) => theme.color.darkGrey};
   }
 `;
 
 export const H3 = styled.h3`
-  font-weight: $light;
+  font-weight: ${({ theme }) => theme.fontWeight.light};
   font-size: 0.9rem;
   line-height: 14px;
   letter-spacing: 3px;
@@ -58,16 +58,16 @@ export const H3 = styled.h3`
     text-align: center;
     font-size: 1.8rem;
     line-height: 30px;
-    font-weight: $light;
+    font-weight: ${({ theme }) => theme.fontWeight.light};
   }
 `;
 
 export const Span = styled.span`
-  color: $darkGrey;
+  color: ${({ theme }) => theme.color.darkGrey};
   text-align: center;
   font-size: 1.3rem;
   line-height: 21px;
-  font-weight: $regular;
+  font-weight: ${({ theme }) => theme.fontWeight.regular};
 
   &.big {
     font-size: 1.4rem;
@@ -75,24 +75,24 @@ export const Span = styled.span`
 
   &.delimiter {
     text-align: center;
-    color: $purpleGrey;
+    color: ${({ theme }) => theme.color.purpleGrey};
     font-size: 1.8rem;
     line-height: 27px;
-    font-weight: $medium;
+    font-weight: ${({ theme }) => theme.fontWeight.medium};
 
     @media (min-width: 1024px) {
       font-size: 2.5rem;
       line-height: 32px;
       letter-spacing: 3px;
-      font-weight: $semibold;
+      font-weight: ${({ theme }) => theme.fontWeight.semibold};
     }
   }
 `;
 
 export const Strong = styled.strong`
-  color: $black;
+  color: ${({ theme }) => theme.color.black};
   text-align: center;
-  font-weight: $semibold;
+  font-weight: ${({ theme }) => theme.fontWeight.semibold};
   font-size: 3.5rem;
   line-height: 53px;
 `;

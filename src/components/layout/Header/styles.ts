@@ -38,23 +38,24 @@ export const Header = styled.header`
       position: relative;
     }
 
+    // App circle inside title
     span {
       position: absolute;
       top: -20px;
       right: -40px;
       padding: 1rem 0.6rem;
       color: $blue;
-      background-color: $white;
+      background-color: ${({ theme }) => theme.colors.white};
       font-size: 1.4rem;
       line-height: 21px;
-      font-weight: $light;
+      font-weight: ${({ theme }) => theme.fonts.light};
       border-radius: 50%;
 
       @media (min-width: 1440px) {
         top: -30px;
         right: -50px;
         padding: 1.6rem 0.9rem;
-        font-weight: $medium;
+        font-weight: ${({ theme }) => theme.fonts.medium};
         height: 7rem;
         font-size: 2.5rem;
         line-height: 38px;

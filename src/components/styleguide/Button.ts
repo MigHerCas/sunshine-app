@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
-  font-family: $fontFamily;
+  font-family: ${({ theme }) => theme.fonts.fontFamily};
   width: 5.2rem;
   height: 4rem;
-  color: $white;
+  color: ${({ theme }) => theme.color.white};
   font-size: 1.4rem;
   line-height: 21px;
-  font-weight: $semibold;
+  font-weight: ${({ theme }) => theme.fontWeight.semibold};
   border-radius: 14px;
   border: none;
 
@@ -23,13 +23,15 @@ export const Button = styled.button`
   }
 
   &.primary {
-    background-color: $green;
+    background-color: ${({ theme }) => theme.color.green};
+    font-size: 1.4rem;
     background-position: center;
     background-image: url("data:image/svg+xml,%3Csvg class='w-6 h-6' fill='%23FFF' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z'%3E%3C/path%3E%3C/svg%3E");
   }
 
   &.secondary {
-    background-color: $orange;
+    background-color: ${({ theme }) => theme.color.orange};
+    font-size: 1.4rem;
     background-position: 58% center;
     background-image: url("data:image/svg+xml,%3Csvg class='w-6 h-6' fill='%23fff' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z'%3E%3C/path%3E%3C/svg%3E%0A");
   }

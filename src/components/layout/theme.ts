@@ -1,6 +1,34 @@
-import { DefaultTheme, css } from 'styled-components';
+import { DefaultTheme } from 'styled-components';
 
-export const theme: DefaultTheme = {
+export interface BaseTheme {
+  colors: {
+    $white: string;
+    $black: string;
+    $blue: string;
+    $green: string;
+    $orange: string;
+    $darkGrey: string;
+    $lightGrey: string;
+    $purpleGrey: string;
+    $colorBackground: string;
+    $outlineBlue: string;
+    $placeholder: string;
+  };
+  fontFamily: string;
+  fontWeight: {
+    $thin: number;
+    $light: number;
+    $regular: number;
+    $medium: number;
+    $semibold: number;
+    $bold: number;
+  };
+  boxShadow: string;
+  border: string;
+  focusState: string;
+}
+
+export const theme: BaseTheme = {
   colors: {
     $white: '#ffffff',
     $black: '#000000',
@@ -14,11 +42,7 @@ export const theme: DefaultTheme = {
     $outlineBlue: 'rgba(#4067dc, 8%)',
     $placeholder: '#949494',
   },
-  fonts: {
-    default: css`
-      $fontFamily: 'Poppins', sans-serif;
-    `,
-  },
+  fontFamily: `'Poppins', sans-serif;`,
   fontWeight: {
     $thin: 200,
     $light: 300,
@@ -27,6 +51,9 @@ export const theme: DefaultTheme = {
     $semibold: 600,
     $bold: 700,
   },
+  $boxShadow: '0px 25px 40px rgba(0, 0, 0, 0.05)',
+  $border: '1px solid rgba(64, 103, 220, 0.08)',
+  $focusState: '2px solid rgba($blue, 0.6)',
 };
 
 export default theme;

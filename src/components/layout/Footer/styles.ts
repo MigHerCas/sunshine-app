@@ -7,7 +7,7 @@ export const Footer = styled.footer`
   bottom: 0;
   transform: translateX(-50%);
   width: 100%;
-  background-color: $white;
+  background-color: ${({ theme }) => theme.colors.white};
   border-radius: 20px 20px 0 0;
 
   @media (min-width: 1024px) {
