@@ -16,8 +16,8 @@ export default function Card({
 }: Props): JSX.Element {
   return (
     <styles.Card className="border shadow round centered">
-      <H2 className="card__heading">{town}</H2>
-      <Span className="card__subheading big">{province}</Span>
+      <H2 className="card__heading">Barcelona{town}</H2>
+      <Span className="card__subheading big">Cataluña{province}</Span>
       <div className="card__details">
         <div className="detail">
           <Strong>{temperature} °</Strong>

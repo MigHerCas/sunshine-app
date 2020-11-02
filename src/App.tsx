@@ -30,7 +30,7 @@ import { EuiComboBoxOptionOption } from '@elastic/eui';
 import { Town } from './types/types';
 
 // Components
-import ComboBox from './components/ComboBox';
+import ComboBox from './components/ComboBox/Component';
 import Header from './components/layout/Header/Component';
 import Footer from './components/layout/Footer/Component';
 import Credentials from './components/Credentials/Component';
@@ -77,6 +77,7 @@ function App(): JSX.Element {
       .get(apiUrl)
       .then(({ data }: AxiosResponse<Town[]>) => {
         // setLoading(false);
+        console.log('Api fetch');
         setDataFromApi(convertDataToComboOption(data));
       })
       .catch((error) => console.log(error));
@@ -88,22 +89,13 @@ function App(): JSX.Element {
       <Container>
         {user ? (
           <>
-            <section className="search-container">
-              <input
-                type="text"
-                name="search"
-                id="search"
-                className="search-input round shadow border"
-                placeholder="Search"
-              />
-            </section>
-
             <ComboBox
               comboBoxData={dataFromApi}
               activeOptions={activeOptions}
               setActiveOptions={setActiveOptions}
               searchesRef={searchesRef}
             />
+
             <CardsContainer>
               <Card town="" province="" temperature={1} rain={1} />
             </CardsContainer>

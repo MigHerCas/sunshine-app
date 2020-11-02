@@ -1,5 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { EuiComboBox, EuiComboBoxOptionOption } from '@elastic/eui';
+import '@elastic/eui/dist/eui_theme_light.css';
+import * as styles from './styles';
 
 interface Props {
   comboBoxData: EuiComboBoxOptionOption[];
@@ -25,12 +27,13 @@ export default function ComboBox({
   };
 
   return (
-    <div>
+    <styles.ComboBox>
       <EuiComboBox
         options={comboBoxData}
         selectedOptions={activeOptions}
         onChange={onChangeHandler}
-        isClearable={true}
+        isClearable
+        fullWidth
         data-test-subj="searchedTowns"
       />
       {activeOptions && (
@@ -44,6 +47,6 @@ export default function ComboBox({
           })}
         </ul>
       )}
-    </div>
+    </styles.ComboBox>
   );
 }
