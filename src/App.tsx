@@ -22,17 +22,17 @@ firebase.initializeApp(FirebaseConfig);
 const auth = firebase.auth();
 const firestore = firebase.firestore();
 
-// Components
-import { SignIn } from './components/SignIn';
-// import { MainPanel } from './components/MainPanel';
-import ComboBox from './components/ComboBox';
+// Utils
+import { convertDataToComboOption } from './utils/dataMapping';
 
 // Types
 import { EuiComboBoxOptionOption } from '@elastic/eui';
 import { Town } from './types/types';
 
-// Utils
-import { convertDataToComboOption } from './utils/dataMapping';
+// Components
+import { SignIn } from './components/SignIn';
+import ComboBox from './components/ComboBox';
+import { Header } from './components/layout/Header/styles';
 
 function App(): JSX.Element {
   // Firebase authentication
@@ -79,17 +79,7 @@ function App(): JSX.Element {
 
   return (
     <>
-      <header>
-        <div className="credits">
-          <h3 className="bold">IOMED</h3>
-          <h3 className="thin">MIGUEL HERNANZ</h3>
-        </div>
-        <div className="heading-wrapper centered">
-          <h1>
-            sunshine <span>app</span>
-          </h1>
-        </div>
-      </header>
+      <Header />
       <main className="app">
         <section className="credentials">
           <div className="credential shadow border round">
