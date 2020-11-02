@@ -13,8 +13,8 @@ interface SignInProps {
   email: string;
   password: string;
 }
-export default function Footer({ auth }: Props): JSX.Element {
-  // Sign in
+export default function Credentials({ auth }: Props): JSX.Element {
+  // Sign in handling
   const [signInData, setSignInData] = useState<SignInProps>({
     email: '',
     password: '',
@@ -34,9 +34,6 @@ export default function Footer({ auth }: Props): JSX.Element {
     const { email, password } = signInData;
     auth.signInWithEmailAndPassword(email, password);
   };
-
-  // Sign out
-  auth.currentUser && <button onClick={() => auth.signOut()}>Sign Out</button>;
 
   return (
     <styles.Credentials>

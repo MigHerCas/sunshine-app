@@ -36,6 +36,7 @@ import Footer from './components/layout/Footer/Component';
 import Credentials from './components/Credentials/Component';
 import { CardsContainer } from './components/CardsContainer/styles';
 import Card from './components/Card/Component';
+import SignOut from './components/SignOut/Component';
 
 function App(): JSX.Element {
   // Firebase authentication
@@ -105,6 +106,7 @@ function App(): JSX.Element {
             <CardsContainer>
               <Card town="" province="" temperature={1} rain={1} />
             </CardsContainer>
+            <SignOut auth={auth} />
           </>
         ) : (
           <Credentials auth={auth} />
