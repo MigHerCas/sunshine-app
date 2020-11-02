@@ -1,21 +1,69 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '../styleguide/Button';
 import { Input } from '../styleguide/Input';
 import { H2, Span } from '../styleguide/Typography';
 import * as styles from './styles';
+import firebase from 'firebase';
 
-export default function Footer(): JSX.Element {
+interface Props {
+  auth: firebase.auth.Auth;
+}
+
+interface SignInProps {
+  email: string;
+  password: string;
+}
+export default function Footer({ auth }: Props): JSX.Element {
+  // Sign in
+  const [signInData, setSignInData] = useState<SignInProps>({
+    email: '',
+    password: '',
+  });
+
+  useEffect(() => {
+    setSignInData(signInData);
+  }, [signInData]);
+
+  const handleSignInWithGoogle = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider);
+  };
+
+  const handleSignInWithEmail = (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const { email, password } = signInData;
+    auth.signInWithEmailAndPassword(email, password);
+  };
+
+  // Sign out
+  auth.currentUser && <button onClick={() => auth.signOut()}>Sign Out</button>;
+
   return (
     <styles.Credentials>
       <div className="credential shadow border round">
         <H2 className="neutral">Login</H2>
-        <form>
-          <Input type="email" name="email" id="email" placeholder="Email" />
+        <form onSubmit={handleSignInWithEmail}>
+          <Input
+            type="email"
+            onChange={(e) =>
+              setSignInData({ ...signInData, email: e.currentTarget.value })
+            }
+            name="email"
+            id="email"
+            placeholder="Email"
+          />
           <div className="form-actions login">
-            <button className="google"></button>
-            <button className="primary"></button>
+            <button className="google" onClick={handleSignInWithGoogle}>
+              Google
+            </button>
+            <button className="primary" type="submit">
+              Submit
+            </button>
           </div>
           <Input
+            onChange={(e) =>
+              setSignInData({ ...signInData, password: e.currentTarget.value })
+            }
             type="password"
             name="password"
             id="password"

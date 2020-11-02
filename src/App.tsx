@@ -30,7 +30,6 @@ import { EuiComboBoxOptionOption } from '@elastic/eui';
 import { Town } from './types/types';
 
 // Components
-import { SignIn } from './components/SignIn';
 import ComboBox from './components/ComboBox';
 import Header from './components/layout/Header/Component';
 import Footer from './components/layout/Footer/Component';
@@ -85,29 +84,30 @@ function App(): JSX.Element {
     <>
       <Header />
       <main className="app">
-        <Credentials />
-        <section className="search-container">
-          <input
-            type="text"
-            name="search"
-            id="search"
-            className="search-input round shadow border"
-            placeholder="Search"
-          />
-        </section>
-        <CardsContainer>
-          <Card town="" province="" temperature={1} rain={1} />
-        </CardsContainer>
-
         {user ? (
-          <ComboBox
-            comboBoxData={dataFromApi}
-            activeOptions={activeOptions}
-            setActiveOptions={setActiveOptions}
-            searchesRef={searchesRef}
-          />
+          <>
+            <section className="search-container">
+              <input
+                type="text"
+                name="search"
+                id="search"
+                className="search-input round shadow border"
+                placeholder="Search"
+              />
+            </section>
+
+            <ComboBox
+              comboBoxData={dataFromApi}
+              activeOptions={activeOptions}
+              setActiveOptions={setActiveOptions}
+              searchesRef={searchesRef}
+            />
+            <CardsContainer>
+              <Card town="" province="" temperature={1} rain={1} />
+            </CardsContainer>
+          </>
         ) : (
-          <SignIn auth={auth} />
+          <Credentials auth={auth} />
         )}
       </main>
       <Footer />
