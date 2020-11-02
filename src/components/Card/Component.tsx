@@ -1,7 +1,6 @@
 import React from 'react';
 import { H2, Span, Strong } from '../styleguide/Typography';
 import * as styles from './styles';
-
 interface Props {
   town: string;
   province: string;

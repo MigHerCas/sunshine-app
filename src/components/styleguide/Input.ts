@@ -6,15 +6,15 @@ export const Input = styled.input`
   padding: 1.1rem 1.8rem;
   text-align: left;
   border: none;
-  background-color: ${({ theme }) => theme.color.darkGrey};
+  background-color: ${(props) => props.theme.colors.darkGrey};
   border-radius: 14px;
-  color: ${({ theme }) => theme.color.placeholder};
+  color: ${(props) => props.theme.colors.placeholder};
 
   &,
   &::placeholder {
-    font-family: ${({ theme }) => theme.fontFamily.darkGrey};
+    font-family: ${(props) => props.theme.colors.darkGrey};
     font-size: 1.2rem;
     line-height: 18px;
-    font-weight: ${({ theme }) => theme.fontWeight.light};
+    font-weight: ${(props) => props.theme.fontWeight.light};
   }
 `;

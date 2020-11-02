@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const H1 = styled.h1`
-  color: ${({ theme }) => theme.color.white};
+  color: ${(props) => props.theme.colors.white};
   font-size: 5rem;
   line-height: 68px;
-  font-weight: ${({ theme }) => theme.fontWeight.thin};
+  font-weight: ${(props) => props.theme.fontWeight.thin};
 
   @media (min-width: 768px) {
     font-size: 6rem;
@@ -24,18 +24,18 @@ export const H1 = styled.h1`
 
 export const H2 = styled.h2`
   text-align: center;
-  font-weight: ${({ theme }) => theme.fontWeight.semibold};
+  font-weight: ${(props) => props.theme.fontWeight.semibold};
   font-size: 2.1rem;
   line-height: 27px;
-  color: ${({ theme }) => theme.color.blue};
+  color: ${(props) => props.theme.colors.blue};
 
   &.neutral {
-    color: ${({ theme }) => theme.color.darkGrey};
+    color: ${(props) => props.theme.colors.darkGrey};
   }
 `;
 
 export const H3 = styled.h3`
-  font-weight: ${({ theme }) => theme.fontWeight.light};
+  font-weight: ${(props) => props.theme.fontWeight.light};
   font-size: 0.9rem;
   line-height: 14px;
   letter-spacing: 3px;
@@ -58,16 +58,16 @@ export const H3 = styled.h3`
     text-align: center;
     font-size: 1.8rem;
     line-height: 30px;
-    font-weight: ${({ theme }) => theme.fontWeight.light};
+    font-weight: ${(props) => props.theme.fontWeight.light};
   }
 `;
 
 export const Span = styled.span`
-  color: ${({ theme }) => theme.color.darkGrey};
+  color: ${(props) => props.theme.colors.darkGrey};
   text-align: center;
   font-size: 1.3rem;
   line-height: 21px;
-  font-weight: ${({ theme }) => theme.fontWeight.regular};
+  font-weight: ${(props) => props.theme.fontWeight.regular};
 
   &.big {
     font-size: 1.4rem;
@@ -75,24 +75,24 @@ export const Span = styled.span`
 
   &.delimiter {
     text-align: center;
-    color: ${({ theme }) => theme.color.purpleGrey};
+    color: ${(props) => props.theme.colors.purpleGrey};
     font-size: 1.8rem;
     line-height: 27px;
-    font-weight: ${({ theme }) => theme.fontWeight.medium};
+    font-weight: ${(props) => props.theme.fontWeight.medium};
 
     @media (min-width: 1024px) {
       font-size: 2.5rem;
       line-height: 32px;
       letter-spacing: 3px;
-      font-weight: ${({ theme }) => theme.fontWeight.semibold};
+      font-weight: ${(props) => props.theme.fontWeight.semibold};
     }
   }
 `;
 
 export const Strong = styled.strong`
-  color: ${({ theme }) => theme.color.black};
+  color: ${(props) => props.theme.colors.black};
   text-align: center;
-  font-weight: ${({ theme }) => theme.fontWeight.semibold};
+  font-weight: ${(props) => props.theme.fontWeight.semibold};
   font-size: 3.5rem;
   line-height: 53px;
 `;

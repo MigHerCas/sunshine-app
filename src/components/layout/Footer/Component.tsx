@@ -2,12 +2,12 @@ import React from 'react';
 import * as styles from './styles';
 
 // Icons
-import TypescriptIcon from '../Icons/typescript.svg';
-import FirebaseIcon from '../Icons/firebase.svg';
-import ReactIcon from '../Icons/react.svg';
-import StyledComponentsIcon from '../Icons/styled-components.svg';
-import FigmaIcon from '../Icons/figma.svg';
-import CodeIcon from '../Icons/vscode.svg';
+import TypescriptIcon from '../../../lib/Icons/typescript.svg';
+import FirebaseIcon from '../../../lib/Icons/firebase.svg';
+import ReactIcon from '../../../lib/Icons/react.svg';
+import StyledComponentsIcon from '../../../lib/Icons/styled-components.svg';
+import FigmaIcon from '../../../lib/Icons/figma.svg';
+import CodeIcon from '../../../lib/Icons/vscode.svg';
 
 import { H3 } from '../../styleguide/Typography';
 

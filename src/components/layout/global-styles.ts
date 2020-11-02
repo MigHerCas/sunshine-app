@@ -13,7 +13,7 @@ export const GlobalStyles = createGlobalStyle`
 
   html {
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: ${(props) => props.theme.fontFamily};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 62.5%;
@@ -74,11 +74,11 @@ export const GlobalStyles = createGlobalStyle`
 
   // Utils classes
   .shadow {
-    box-shadow: 0px 25px 40px rgba(0, 0, 0, 0.05);
+    box-shadow: ${(props) => props.theme.boxShadow};
   }
 
   .border {
-    border: 1px solid rgba(64, 103, 220, 0.08);
+    border: ${(props) => props.theme.border};
   }
 
   .round {

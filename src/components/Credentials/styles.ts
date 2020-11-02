@@ -22,7 +22,7 @@ export const Credentials = styled.section`
     width: 32.5rem;
     padding: 2rem;
     border-radius: 32px;
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: ${(props) => props.theme.colors.white};
     filter: drop-shadow(0px 25px 40px rgba(0, 0, 0, 0.05));
 
     form {
@@ -59,7 +59,7 @@ export const Credentials = styled.section`
         outline: none;
 
         &::placeholder {
-          color: ${({ theme }) => theme.colors.placeholder};
+          color: ${(props) => props.theme.colors.placeholder};
         }
       }
     }

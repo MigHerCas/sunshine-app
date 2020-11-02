@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ThemeProvider } from 'styled-components';
 import App from './App';
-import theme from './components/layout/theme';
+
+// Styled components theming
+import { ThemeProvider } from 'styled-components';
+import sunshine from './components/layout/theme';
+import { GlobalStyles } from './components/layout/global-styles';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={sunshine}>
+      <GlobalStyles />
       <App />
     </ThemeProvider>
   </React.StrictMode>,
