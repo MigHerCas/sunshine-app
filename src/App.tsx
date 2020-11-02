@@ -34,6 +34,7 @@ import { SignIn } from './components/SignIn';
 import ComboBox from './components/ComboBox';
 import Header from './components/layout/Header/Component';
 import Footer from './components/layout/Footer/Component';
+import Credentials from './components/Credentials/Component';
 
 function App(): JSX.Element {
   // Firebase authentication
@@ -82,54 +83,7 @@ function App(): JSX.Element {
     <>
       <Header />
       <main className="app">
-        <section className="credentials">
-          <div className="credential shadow border round">
-            <h2 className="neutral">Login</h2>
-            <form>
-              <input
-                className="text-input"
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Email"
-              />
-              <div className="form-actions login">
-                <button className="google"></button>
-                <button className="primary"></button>
-              </div>
-              <input
-                className="text-input"
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Password"
-              />
-            </form>
-          </div>
-          <span className="delimiter">OR</span>
-          <div className="credential shadow border round">
-            <h2 className="neutral">Sign up</h2>
-            <form>
-              <input
-                className="text-input"
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Email"
-              />
-              <div className="form-actions signup">
-                <button className="secondary"></button>
-              </div>
-              <input
-                className="text-input"
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Password"
-              />
-            </form>
-          </div>
-        </section>
+        <Credentials />
         <section className="search-container">
           <input
             type="text"
