@@ -35,6 +35,8 @@ import ComboBox from './components/ComboBox';
 import Header from './components/layout/Header/Component';
 import Footer from './components/layout/Footer/Component';
 import Credentials from './components/Credentials/Component';
+import { CardsContainer } from './components/CardsContainer/styles';
+import Card from './components/Card/Component';
 
 function App(): JSX.Element {
   // Firebase authentication
@@ -93,50 +95,9 @@ function App(): JSX.Element {
             placeholder="Search"
           />
         </section>
-        <section className="cards-container">
-          <article className="card border shadow round centered">
-            <h2 className="card__heading">Barcelona</h2>
-            <span className="card__subheading big">Cataluña</span>
-            <div className="card__details">
-              <div className="detail">
-                <strong>27 °</strong>
-                <span>Temperature</span>
-              </div>
-              <div className="detail">
-                <strong>54 %</strong>
-                <span>Rain probability</span>
-              </div>
-            </div>
-          </article>
-          <article className="card border shadow round centered">
-            <h2 className="card__heading">Barcelona</h2>
-            <span className="card__subheading big">Cataluña</span>
-            <div className="card__details">
-              <div className="detail">
-                <strong>27 °</strong>
-                <span>Temperature</span>
-              </div>
-              <div className="detail">
-                <strong>54 %</strong>
-                <span>Rain probability</span>
-              </div>
-            </div>
-          </article>
-          <article className="card border shadow round centered">
-            <h2 className="card__heading">Barcelona</h2>
-            <span className="card__subheading big">Cataluña</span>
-            <div className="card__details">
-              <div className="detail">
-                <strong>27 °</strong>
-                <span>Temperature</span>
-              </div>
-              <div className="detail">
-                <strong>54 %</strong>
-                <span>Rain probability</span>
-              </div>
-            </div>
-          </article>
-        </section>
+        <CardsContainer>
+          <Card town="" province="" temperature={1} rain={1} />
+        </CardsContainer>
 
         {user ? (
           <ComboBox
