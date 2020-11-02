@@ -61,3 +61,38 @@ export const H3 = styled.h3`
     font-weight: $light;
   }
 `;
+
+export const Span = styled.span`
+  color: $darkGrey;
+  text-align: center;
+  font-size: 1.3rem;
+  line-height: 21px;
+  font-weight: $regular;
+
+  &.big {
+    font-size: 1.4rem;
+  }
+
+  &.delimiter {
+    text-align: center;
+    color: $purpleGrey;
+    font-size: 1.8rem;
+    line-height: 27px;
+    font-weight: $medium;
+
+    @media (min-width: 1024px) {
+      font-size: 2.5rem;
+      line-height: 32px;
+      letter-spacing: 3px;
+      font-weight: $semibold;
+    }
+  }
+`;
+
+export const Strong = styled.strong`
+  color: $black;
+  text-align: center;
+  font-weight: $semibold;
+  font-size: 3.5rem;
+  line-height: 53px;
+`;

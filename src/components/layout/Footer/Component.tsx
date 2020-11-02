@@ -9,7 +9,7 @@ import StyledComponentsIcon from '../Icons/styled-components.svg';
 import FigmaIcon from '../Icons/figma.svg';
 import CodeIcon from '../Icons/vscode.svg';
 
-import { H3 } from '../../styleguide/Headings';
+import { H3 } from '../../styleguide/Typography';
 
 export default function Footer(): JSX.Element {
   return (

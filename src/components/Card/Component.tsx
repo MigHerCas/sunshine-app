@@ -1,4 +1,5 @@
 import React from 'react';
+import { H2 } from '../styleguide/Typography';
 import * as styles from './styles';
 
 interface Props {
@@ -16,7 +17,7 @@ export default function Card({
 }: Props): JSX.Element {
   return (
     <styles.Card className="border shadow round centered">
-      <h2 className="card__heading">{town}</h2>
+      <H2 className="card__heading">{town}</H2>
       <span className="card__subheading big">{province}</span>
       <div className="card__details">
         <div className="detail">

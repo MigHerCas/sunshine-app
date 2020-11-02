@@ -1,6 +1,6 @@
 import React from 'react';
 import Credits from '../../Credits/Component';
-import { H1 } from '../../styleguide/Headings';
+import { H1 } from '../../styleguide/Typography';
 import * as styles from './styles';
 
 export default function Header(): JSX.Element {

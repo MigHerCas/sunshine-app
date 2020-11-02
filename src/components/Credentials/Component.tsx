@@ -1,5 +1,5 @@
 import React from 'react';
-import { H2 } from '../styleguide/Headings';
+import { H2 } from '../styleguide/Typography';
 import * as styles from './styles';
 
 export default function Footer(): JSX.Element {
