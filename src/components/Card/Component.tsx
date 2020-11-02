@@ -1,5 +1,5 @@
 import React from 'react';
-import { H2 } from '../styleguide/Typography';
+import { H2, Span, Strong } from '../styleguide/Typography';
 import * as styles from './styles';
 
 interface Props {
@@ -18,15 +18,15 @@ export default function Card({
   return (
     <styles.Card className="border shadow round centered">
       <H2 className="card__heading">{town}</H2>
-      <span className="card__subheading big">{province}</span>
+      <Span className="card__subheading big">{province}</Span>
       <div className="card__details">
         <div className="detail">
-          <strong>{temperature} °</strong>
-          <span>Temperature</span>
+          <Strong>{temperature} °</Strong>
+          <Span>Temperature</Span>
         </div>
         <div className="detail">
-          <strong>{rain}%</strong>
-          <span>Rain probability</span>
+          <Strong>{rain}%</Strong>
+          <Span>Rain probability</Span>
         </div>
       </div>
     </styles.Card>

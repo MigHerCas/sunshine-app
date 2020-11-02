@@ -1,5 +1,7 @@
 import React from 'react';
-import { H2 } from '../styleguide/Typography';
+import { Button } from '../styleguide/Button';
+import { Input } from '../styleguide/Input';
+import { H2, Span } from '../styleguide/Typography';
 import * as styles from './styles';
 
 export default function Footer(): JSX.Element {
@@ -8,19 +10,12 @@ export default function Footer(): JSX.Element {
       <div className="credential shadow border round">
         <H2 className="neutral">Login</H2>
         <form>
-          <input
-            className="text-input"
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email"
-          />
+          <Input type="email" name="email" id="email" placeholder="Email" />
           <div className="form-actions login">
             <button className="google"></button>
             <button className="primary"></button>
           </div>
-          <input
-            className="text-input"
+          <Input
             type="password"
             name="password"
             id="password"
@@ -28,22 +23,15 @@ export default function Footer(): JSX.Element {
           />
         </form>
       </div>
-      <span className="delimiter">OR</span>
+      <Span className="delimiter">OR</Span>
       <div className="credential shadow border round">
         <H2 className="neutral">Sign up</H2>
         <form>
-          <input
-            className="text-input"
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email"
-          />
+          <Input type="email" name="email" id="email" placeholder="Email" />
           <div className="form-actions signup">
-            <button className="secondary"></button>
+            <Button className="secondary"></Button>
           </div>
-          <input
-            className="text-input"
+          <Input
             type="password"
             name="password"
             id="password"
