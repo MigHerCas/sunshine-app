@@ -51,7 +51,7 @@ export const H3 = styled.h3`
   }
 
   &.bold {
-    font-weight: $bold;
+    font-weight: ${(props) => props.theme.fontWeight.medium};
   }
 
   &.especial {
