@@ -50,12 +50,11 @@ export default function Credentials({ auth }: Props): JSX.Element {
             placeholder="Email"
           />
           <div className="form-actions login">
-            <button className="google" onClick={handleSignInWithGoogle}>
-              Google
-            </button>
-            <button className="primary" type="submit">
-              Submit
-            </button>
+            <Button
+              className="google"
+              onClick={handleSignInWithGoogle}
+            ></Button>
+            <Button className="primary" type="submit"></Button>
           </div>
           <Input
             onChange={(e) =>

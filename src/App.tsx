@@ -37,6 +37,7 @@ import Credentials from './components/Credentials/Component';
 import { CardsContainer } from './components/CardsContainer/styles';
 import Card from './components/Card/Component';
 import SignOut from './components/SignOut/Component';
+import { Container } from './components/layout/Container/styles';
 
 function App(): JSX.Element {
   // Firebase authentication
@@ -84,7 +85,7 @@ function App(): JSX.Element {
   return (
     <>
       <Header />
-      <main className="app">
+      <Container>
         {user ? (
           <>
             <section className="search-container">
@@ -111,7 +112,7 @@ function App(): JSX.Element {
         ) : (
           <Credentials auth={auth} />
         )}
-      </main>
+      </Container>
       <Footer />
     </>
   );
