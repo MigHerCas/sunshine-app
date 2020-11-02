@@ -1,13 +1,14 @@
 import React from 'react';
 import * as styles from './styles';
 
+// Icons
 import TypescriptIcon from '../Icons/typescript.svg';
 import FirebaseIcon from '../Icons/firebase.svg';
 import ReactIcon from '../Icons/react.svg';
-// TODO: Change into styled-components
-import SassIcon from '../Icons/sass.svg';
+import StyledComponentsIcon from '../Icons/styled-components.svg';
 import FigmaIcon from '../Icons/figma.svg';
 import CodeIcon from '../Icons/vscode.svg';
+
 import { H3 } from '../../styleguide/Headings';
 
 export default function Footer(): JSX.Element {
@@ -18,7 +19,7 @@ export default function Footer(): JSX.Element {
         <FirebaseIcon />
         <ReactIcon />
         <H3 className="especial">BUILT WITH</H3>
-        <SassIcon />
+        <StyledComponentsIcon />
         <FigmaIcon />
         <CodeIcon />
       </div>
