@@ -1,6 +1,13 @@
 import { createGlobalStyle } from 'styled-components';
 import styledNormalize from 'styled-normalize';
 
+const backgroundAssets = {
+  backgroundSm: '/background/background-sm.png',
+  backgroundMd: '/background/background-md.png',
+  backgroundLg: '/background/background-lg.png',
+  backgroundTablet: '/background/background-tablet.png',
+};
+
 export const GlobalStyles = createGlobalStyle`
   ${styledNormalize}
   *,
@@ -28,22 +35,23 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     padding: 3rem;
-    background-image: url("../img/background-sm.png");
+    background-color: ${(props) => props.theme.colors.colorBackground};
+    background-image: url(${backgroundAssets.backgroundSm});
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
 
     @media (min-width: 768px) {
-      background-image: url("../img/background-tablet.png");
+      background-image: url(${backgroundAssets.backgroundTablet});
       padding: 5rem;
     }
 
     @media (min-width: 1024px) {
-      background-image: url("../img/background-md.png");
+      background-image: url(${backgroundAssets.backgroundMd});
     }
 
     @media (min-width: 1600px) {
-      background-image: url("../img/background-lg.png");
+      background-image: url(${backgroundAssets.backgroundLg});
     }
   }
 
