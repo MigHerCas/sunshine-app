@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
-  font-family: ${(props) => props.theme.fontFamily};
   width: 5.2rem;
   height: 4rem;
   color: ${(props) => props.theme.colors.white};
+  font-family: ${(props) => props.theme.fontFamily};
   font-size: 1.4rem;
   line-height: 21px;
   font-weight: ${(props) => props.theme.fontWeight.semibold};
   border-radius: 14px;
   border: none;
+  cursor: pointer;
 
   @media (min-width: 1024px) {
     width: 26rem;

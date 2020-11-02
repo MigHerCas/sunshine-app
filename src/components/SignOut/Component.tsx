@@ -9,9 +9,10 @@ export default function SignOut({ auth }: Props): JSX.Element {
   // Sign out handling
   if (auth.currentUser) {
     return (
-      <styles.SignOutButton onClick={() => auth.signOut()}>
-        Sign Out
-      </styles.SignOutButton>
+      <styles.SignOutButton
+        onClick={() => auth.signOut()}
+        name="signOut"
+      ></styles.SignOutButton>
     );
   } else {
     return <></>;

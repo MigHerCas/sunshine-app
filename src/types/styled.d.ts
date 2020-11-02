@@ -9,10 +9,8 @@ declare module 'styled-components' {
       green: string;
       orange: string;
       darkGrey: string;
-      lightGrey: string;
       purpleGrey: string;
       colorBackground: string;
-      outlineBlue: string;
       placeholder: string;
     };
     fontFamily: string;
