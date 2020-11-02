@@ -31,5 +31,9 @@ export const Footer = styled.footer`
     svg {
       height: 3.5rem;
     }
+
+    .styled-components-span {
+      font-size: 3rem;
+    }
   }
 `;

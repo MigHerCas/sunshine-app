@@ -61,7 +61,7 @@ export default function Footer(): JSX.Element {
           </g>
         </svg>
         <H3 className="especial">BUILT WITH</H3>
-        <span>💅</span>
+        <span className="styled-components-span">💅</span>
         <svg
           fill="none"
           height="40"
