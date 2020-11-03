@@ -38,6 +38,7 @@ import { CardsContainer } from './components/CardsContainer/styles';
 import Card from './components/Card/Component';
 import SignOut from './components/SignOut/Component';
 import { Container } from './components/layout/Container/styles';
+import { Credits } from './components/Credits/styles';
 
 function App(): JSX.Element {
   // Firebase authentication
@@ -85,6 +86,7 @@ function App(): JSX.Element {
 
   return (
     <>
+      <Credits />
       <Header />
       <Container>
         {user ? (
