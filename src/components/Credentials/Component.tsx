@@ -9,13 +9,19 @@ interface Props {
   auth: firebase.auth.Auth;
 }
 
-interface SignInProps {
+interface AuthProps {
   email: string;
   password: string;
 }
 export default function Credentials({ auth }: Props): JSX.Element {
+  // Sign up handling
+  const [signUpData, setSignUpData] = useState<AuthProps>({
+    email: '',
+    password: '',
+  });
+
   // Sign in handling
-  const [signInData, setSignInData] = useState<SignInProps>({
+  const [signInData, setSignInData] = useState<AuthProps>({
     email: '',
     password: '',
   });
@@ -24,15 +30,28 @@ export default function Credentials({ auth }: Props): JSX.Element {
     setSignInData(signInData);
   }, [signInData]);
 
+  useEffect(() => {
+    setSignUpData(signUpData);
+  }, [signUpData]);
+
   const handleSignInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
+
     auth.signInWithPopup(provider);
   };
 
   const handleSignInWithEmail = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { email, password } = signInData;
+
     auth.signInWithEmailAndPassword(email, password);
+  };
+
+  const handleSignUpWithEmail = (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const { email, password } = signUpData;
+
+    auth.createUserWithEmailAndPassword(email, password);
   };
 
   return (
@@ -46,7 +65,7 @@ export default function Credentials({ auth }: Props): JSX.Element {
               setSignInData({ ...signInData, email: e.currentTarget.value })
             }
             name="email"
-            id="email"
+            id="signInEmail"
             placeholder="Email"
           />
           <Input
@@ -55,7 +74,7 @@ export default function Credentials({ auth }: Props): JSX.Element {
             }
             type="password"
             name="password"
-            id="password"
+            id="signInPassword"
             placeholder="Password"
           />
           <div className="form-actions login">
@@ -70,13 +89,24 @@ export default function Credentials({ auth }: Props): JSX.Element {
       <Span className="delimiter">OR</Span>
       <div className="credential shadow border round">
         <H2 className="neutral">Sign up</H2>
-        <form>
-          <Input type="email" name="email" id="email" placeholder="Email" />
+        <form onSubmit={handleSignUpWithEmail}>
+          <Input
+            type="email"
+            name="email"
+            id="signUpEmail"
+            placeholder="Email"
+            onChange={(e) =>
+              setSignUpData({ ...signUpData, email: e.currentTarget.value })
+            }
+          />
           <Input
             type="password"
             name="password"
-            id="password"
+            id="signUpPassword"
             placeholder="Password"
+            onChange={(e) =>
+              setSignUpData({ ...signUpData, password: e.currentTarget.value })
+            }
           />
           <div className="form-actions signup">
             <Button className="secondary"></Button>
