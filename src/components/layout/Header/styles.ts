@@ -24,14 +24,14 @@ export const Header = styled.header`
   }
 
   .heading-wrapper {
-    padding-top: 3rem;
+    margin-top: 3rem;
 
     @media (min-width: 1024px) {
-      padding-top: 6rem;
+      margin-top: 6rem;
     }
 
     @media (min-width: 1440px) {
-      padding-top: 7rem;
+      margin-top: 7rem;
     }
 
     h1 {

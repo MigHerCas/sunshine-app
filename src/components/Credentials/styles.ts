@@ -6,10 +6,8 @@ export const Credentials = styled.section`
   align-items: center;
   row-gap: 2.7rem;
   column-gap: 2rem;
-  padding-top: 2.9rem;
 
   @media (min-width: 1440px) {
-    padding-top: 5rem;
     flex-direction: row;
     justify-content: space-between;
   }
@@ -37,7 +35,8 @@ export const Credentials = styled.section`
       }
 
       .form-actions {
-        grid-row: span 2;
+        grid-column: 2 / span 1;
+        grid-row: 1 / span 2;
         display: flex;
         flex-direction: column;
         height: 100%;
@@ -60,6 +59,15 @@ export const Credentials = styled.section`
 
         &::placeholder {
           color: ${(props) => props.theme.colors.placeholder};
+        }
+
+        &:focus::placeholder {
+          color: ${(props) => props.theme.colors.blue};
+          opacity: 0.6;
+        }
+
+        &:focus {
+          box-shadow: ${(props) => props.theme.focusState};
         }
       }
     }

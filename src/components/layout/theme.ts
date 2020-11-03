@@ -21,5 +21,5 @@ export default {
   },
   boxShadow: '0px 25px 40px rgba(0, 0, 0, 0.05)',
   border: '1px solid rgba(64, 103, 220, 0.08)',
-  focusState: '2px solid rgba(#4067dc, 0.6)',
+  focusState: '0px 0px 0px 3px rgba(64,103,220,0.6)',
 };

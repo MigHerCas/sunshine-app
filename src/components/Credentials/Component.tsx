@@ -49,13 +49,6 @@ export default function Credentials({ auth }: Props): JSX.Element {
             id="email"
             placeholder="Email"
           />
-          <div className="form-actions login">
-            <Button
-              className="google"
-              onClick={handleSignInWithGoogle}
-            ></Button>
-            <Button className="primary" type="submit"></Button>
-          </div>
           <Input
             onChange={(e) =>
               setSignInData({ ...signInData, password: e.currentTarget.value })
@@ -65,6 +58,13 @@ export default function Credentials({ auth }: Props): JSX.Element {
             id="password"
             placeholder="Password"
           />
+          <div className="form-actions login">
+            <Button
+              className="google"
+              onClick={handleSignInWithGoogle}
+            ></Button>
+            <Button className="primary" type="submit"></Button>
+          </div>
         </form>
       </div>
       <Span className="delimiter">OR</Span>
@@ -72,15 +72,15 @@ export default function Credentials({ auth }: Props): JSX.Element {
         <H2 className="neutral">Sign up</H2>
         <form>
           <Input type="email" name="email" id="email" placeholder="Email" />
-          <div className="form-actions signup">
-            <Button className="secondary"></Button>
-          </div>
           <Input
             type="password"
             name="password"
             id="password"
             placeholder="Password"
           />
+          <div className="form-actions signup">
+            <Button className="secondary"></Button>
+          </div>
         </form>
       </div>
     </styles.Credentials>
