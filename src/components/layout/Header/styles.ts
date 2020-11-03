@@ -7,10 +7,6 @@ export const Header = styled.header`
   position: relative;
   margin-bottom: 2.1rem;
 
-  @media (min-width: 768px) {
-    margin-bottom: 3.5rem;
-  }
-
   .credits {
     position: fixed;
     bottom: 2rem;

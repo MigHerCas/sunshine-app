@@ -8,12 +8,6 @@ export const ComboBox = styled.section`
     border-radius: 20px;
     box-shadow: ${(props) => props.theme.boxShadow};
 
-    @media (min-width: 1024px) {
-      max-width: 58rem;
-    }
-  }
-
-  .euiFormControlLayout {
     max-width: 40rem;
 
     @media (min-width: 1024px) {
@@ -39,7 +33,7 @@ export const ComboBox = styled.section`
   }
 
   .euiComboBox .euiComboBox__inputWrap {
-    max-width: none;
+    /* max-width: none; */
     width: 100%;
     font-family: ${(props) => props.theme.fontFamily};
     border-radius: 20px;
