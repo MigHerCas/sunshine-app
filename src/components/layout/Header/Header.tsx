@@ -1,5 +1,5 @@
 import React from 'react';
-import Credits from '../../Credits/Component';
+import Credits from '../../Credits/Credits';
 import { H1 } from '../../styleguide/Typography';
 import * as styles from './styles';
 
