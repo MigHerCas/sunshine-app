@@ -7,23 +7,18 @@ import { API_URL_LIST } from './constants/constants';
 
 // Firebase
 import firebase from 'firebase/app';
-import 'firebase/firestore';
 import 'firebase/auth';
 
 import { FirebaseConfig } from './firebase/config';
 
 // Firebase hooks
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 // Initialize firebase app
 firebase.initializeApp(FirebaseConfig);
 
 // Firebase global variables
 const auth = firebase.auth();
-const firestore = firebase.firestore();
-
-firebase.firestore().settings({ experimentalForceLongPolling: true });
 
 // Utils
 import { convertDataToComboOption } from './utils/dataMapping';
@@ -46,22 +41,10 @@ function App(): JSX.Element {
   // Firebase authentication
   const [user] = useAuthState(auth);
 
-  // Firestore storage
-  const searchesRef = firestore.collection('searches');
-  const query = searchesRef.orderBy('NOMBRE').limit(3);
-  const [values] = useCollectionData<Town>(query, { idField: 'id' });
-
-  // const [loading, setLoading] = useState<boolean>(false);
   const [dataFromApi, setDataFromApi] = useState<EuiComboBoxOptionOption[]>([]);
   const [activeOptions, setActiveOptions] = useState<EuiComboBoxOptionOption[]>(
     []
   );
-
-  useEffect(() => {
-    // Firestore intiial fetch
-    // We need to convert from CollectionData into EuiComboBoxOptionOption[]
-    values && setActiveOptions(convertDataToComboOption(values));
-  }, [values]);
 
   useEffect(() => {
     // API
@@ -69,11 +52,19 @@ function App(): JSX.Element {
     axios
       .get(apiUrl)
       .then(({ data }: AxiosResponse<Town[]>) => {
-        console.log('Api fetch');
         setDataFromApi(convertDataToComboOption(data));
       })
       .catch((error) => console.log(error));
+
+    // Localstorage fetch
+    const localStorageData = localStorage.getItem('activeOptions');
+
+    localStorageData && setActiveOptions(JSON.parse(localStorageData) || []);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('activeOptions', JSON.stringify(activeOptions));
+  }, [activeOptions]);
 
   return (
     <>
@@ -82,20 +73,23 @@ function App(): JSX.Element {
       <Container>
         {user ? (
           <>
+            {/**
+             * @name ComboBox
+             * @return {EuiComboBox}
+             *
+             * Read utils/note.md
+             */}
             <ComboBox
               comboBoxData={dataFromApi}
               activeOptions={activeOptions}
               setActiveOptions={setActiveOptions}
-              searchesRef={searchesRef}
             />
 
             <CardsContainer>
-              <Card
-                town="Barcelona"
-                province="Cataluña"
-                temperature={1}
-                rain={1}
-              />
+              {activeOptions.map(
+                ({ key, label }, _) =>
+                  key && <Card townName={label} key={_} provinceName={key} />
+              )}
             </CardsContainer>
             <SignOut auth={auth} />
           </>

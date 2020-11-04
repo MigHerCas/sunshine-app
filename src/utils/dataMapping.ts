@@ -14,11 +14,10 @@ export function convertDataToComboOption(
 ): EuiComboBoxOptionOption[] {
   const mappedOptions: EuiComboBoxOptionOption[] = [];
 
-  data.map(({ CODIGOINE, NOMBRE, CODPROV, NOMBRE_PROVINCIA }: Town): void => {
+  data.map(({ NOMBRE, NOMBRE_PROVINCIA }: Town): void => {
     mappedOptions.push({
       label: NOMBRE,
-      key: CODIGOINE,
-      value: [CODPROV, NOMBRE_PROVINCIA],
+      key: NOMBRE_PROVINCIA,
     });
   });
 
