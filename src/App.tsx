@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios, { AxiosResponse } from 'axios';
 
 // Constants
-import { API_URL_LIST } from './constants/constants';
+import { API_URL_LIST, FIRESTORE_COLLECTION } from './constants/constants';
 
 // Firebase
 import firebase from 'firebase/app';
@@ -50,10 +50,10 @@ function App(): JSX.Element {
   const [user] = useAuthState(auth);
 
   // Firestore storage
-  const collection = firestore.collection('municipios');
-  const query = collection.orderBy('nombre').limitToLast(3);
+  const collection = firestore.collection(FIRESTORE_COLLECTION);
+  const query = collection.orderBy('nombre').limit(3);
 
-  const [values] = useCollectionData<Ciudad>(query);
+  const [values] = useCollectionData<Ciudad[]>(query);
   const [ciudades, setCiudades] = useState<Ciudad[]>([]);
 
   // Data fetching API data fetch + converts it to type EuiComboBoxOptionOption[]
@@ -61,8 +61,8 @@ function App(): JSX.Element {
     setLoading(true);
 
     // We check if api has been cosumed to improve performance
-    const isApiInitiated = localStorage.getItem('apiCheck');
-    if (!isApiInitiated) return;
+    const isApiConsumed = localStorage.getItem('apiCheck');
+    if (isApiConsumed) return;
 
     // API
     const apiUrl = API_URL_LIST;
@@ -70,26 +70,23 @@ function App(): JSX.Element {
       .get(apiUrl)
       .then(({ data }: AxiosResponse<Town[]>) => {
         console.log('Api:');
+
         const mappedDataFromApi: Town[] = data.map(
           ({ CODIGOINE, CODPROV, NOMBRE, NOMBRE_PROVINCIA }) => {
             return { CODIGOINE, CODPROV, NOMBRE, NOMBRE_PROVINCIA };
           }
         );
-        localStorage.setItem('apiCheck', 'true');
 
         console.log('Mapped:', mappedDataFromApi);
-
-        setLoading(false);
       })
-
       .catch((error) => console.log(error));
   }, []);
 
   useEffect(() => {
     // Update API to firebase
     // collection.doc(user?.uid).set();
-    console.log('Empty');
-  }, []);
+    console.log('Values: Empty');
+  }, [values]);
 
   useEffect(() => {
     // Update API to firebase

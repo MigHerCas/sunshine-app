@@ -1,4 +1,6 @@
 export const API_URL_LIST = 'https://www.el-tiempo.net/api/json/v2/municipios';
+export const FIRESTORE_COLLECTION = 'municipios';
+export const FIRESTORE_LIST_DOCUMENT = 'lista';
 
 /*
   Lista de municipios:
