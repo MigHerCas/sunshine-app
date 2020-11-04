@@ -1,36 +1,27 @@
 import React, { useEffect, useState } from 'react';
-// import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 // Constants
-// import { API_URL_LIST } from './constants/constants';
+import { API_URL_LIST } from './constants/constants';
 
 // Firebase
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
-// import { FirebaseConfig } from './firebase/config';
+import { FirebaseConfig } from './firebase/config';
 
 // Firebase hooks
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 // Initialize firebase app
-// firebase.initializeApp(FirebaseConfig);
-firebase.initializeApp({
-  apiKey: 'AIzaSyD7CHIT0VpArf16ZJDf8rsvyzQQmVLYJt4',
-  authDomain: 'sunshineapp-725c4.firebaseapp.com',
-  databaseURL: 'https://sunshineapp-725c4.firebaseio.com',
-  projectId: 'sunshineapp-725c4',
-  storageBucket: 'sunshineapp-725c4.appspot.com',
-  messagingSenderId: '251229924882',
-  appId: '1:251229924882:web:f97d0e270ccac7fb9cb2cb',
-  measurementId: 'G-P506GB2BHS',
-});
+firebase.initializeApp(FirebaseConfig);
 
 // Firebase global variables
 const auth = firebase.auth();
 const firestore = firebase.firestore();
+
 firebase.firestore().settings({ experimentalForceLongPolling: true });
 
 // Utils
@@ -53,29 +44,91 @@ interface Ciudad {
 }
 
 function App(): JSX.Element {
+  const [loading, setLoading] = useState<boolean>(false);
+
   // Firebase authentication
   const [user] = useAuthState(auth);
 
   // Firestore storage
-  const searchesRef = firestore.collection('searches');
-  const query = searchesRef.orderBy('ciudad').limit(3);
-  const [values] = useCollectionData<Town>(query, { idField: 'id' });
+  const collection = firestore.collection('municipios');
+  const query = collection.orderBy('nombre').limitToLast(3);
 
-  // const [loading, setLoading] = useState<boolean>(false);
+  const [values] = useCollectionData<Ciudad>(query);
   const [ciudades, setCiudades] = useState<Ciudad[]>([]);
 
+  // Data fetching API data fetch + converts it to type EuiComboBoxOptionOption[]
   useEffect(() => {
+    setLoading(true);
+
+    // We check if api has been cosumed to improve performance
+    const isApiInitiated = localStorage.getItem('apiCheck');
+    if (!isApiInitiated) return;
+
+    // API
+    const apiUrl = API_URL_LIST;
+    axios
+      .get(apiUrl)
+      .then(({ data }: AxiosResponse<Town[]>) => {
+        console.log('Api:');
+        const mappedDataFromApi: Town[] = data.map(
+          ({ CODIGOINE, CODPROV, NOMBRE, NOMBRE_PROVINCIA }) => {
+            return { CODIGOINE, CODPROV, NOMBRE, NOMBRE_PROVINCIA };
+          }
+        );
+        localStorage.setItem('apiCheck', 'true');
+
+        console.log('Mapped:', mappedDataFromApi);
+
+        setLoading(false);
+      })
+
+      .catch((error) => console.log(error));
+  }, []);
+
+  useEffect(() => {
+    // Update API to firebase
+    // collection.doc(user?.uid).set();
+    console.log('Empty');
+  }, []);
+
+  useEffect(() => {
+    // Update API to firebase
+    // collection.doc(user?.uid).set();
+
     // Firestore intiial fetch
-    values && setCiudades(ciudades);
-  }, [values]);
+    console.log('Query:');
+    console.log('Values:', values);
+    // setCiudades(values);
+  }, []);
+
+  useEffect(() => {
+    console.log('ciudades dice: ', ciudades);
+    // collection.add({
+    //   ciudades,
+    // });
+  }, [ciudades]);
+
+  const submitHandle = (event: any): void => {
+    event.preventDefault();
+    const nuevaCiudad = {
+      nombre: event.currentTarget[0].value,
+    };
+
+    setCiudades([...ciudades, nuevaCiudad]);
+  };
 
   return (
     <>
       <Credits />
       <Header />
       <Container>
+        {loading && <p>loading</p>}
         {user ? (
           <>
+            <form onSubmit={(e) => submitHandle(e)}>
+              <input type="text" name="text" />
+              <button type="submit">Submit</button>
+            </form>
             <CardsContainer>
               {ciudades.map(({ nombre }, index) => {
                 return (

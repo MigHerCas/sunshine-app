@@ -1,8 +1,10 @@
 export const FirebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
+  apiKey: 'AIzaSyD7CHIT0VpArf16ZJDf8rsvyzQQmVLYJt4',
+  authDomain: 'sunshineapp-725c4.firebaseapp.com',
+  databaseURL: 'https://sunshineapp-725c4.firebaseio.com',
+  projectId: 'sunshineapp-725c4',
+  storageBucket: 'sunshineapp-725c4.appspot.com',
+  messagingSenderId: '251229924882',
+  appId: '1:251229924882:web:f97d0e270ccac7fb9cb2cb',
+  measurementId: 'G-P506GB2BHS',
 };
