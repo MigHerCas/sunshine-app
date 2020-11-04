@@ -1,6 +1,6 @@
-<h4 align="center">
+<h2 align="center">
   IOMED Sunshineapp
-</h4>
+</h2>
 
 React App written in Typescript that fetchs spanish towns list and allows to consult current that from a certain city or town.
 [IOMED](https://iomed.es/) assessment.
@@ -14,16 +14,19 @@ What did I build this?
 3. **Firebase learning.** The assessment requires user authentication. Firebase auth was my choice as I wanted to dive into this service for the first time.
 4. **Portfolio.** This helps me to show my skills with `actual` content .
 
+
 ## Issues
 
 Api required for town list: [link](https://www.el-tiempo.net/api) doesn't work in neither of v1 or v2 while searching for an especific town. 
 
 > To fix this, I introduced OpenWeatherApi, which works flawlessly! 🚀
 
+
 Links:
 
 - [`OpenWeatherApi`](https://openweathermap.org/current)
 - [`Elastic UI EuiComboBox`](https://elastic.github.io/eui/#/forms/combo-box)
+
 
 ## Install
 ```shell
