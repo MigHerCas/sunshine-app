@@ -1,15 +1,12 @@
 import styled from 'styled-components';
 
 export const Card = styled.article`
-  flex: 1;
-  width: 100%;
-  max-width: 26rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  width: 26rem;
   padding: 3rem;
   background-color: ${(props) => props.theme.colors.white};
-
-  @media (min-width: 768px) {
-    flex-basis: 26rem;
-  }
 
   .card__details {
     padding: 1rem 0;
@@ -18,6 +15,7 @@ export const Card = styled.article`
   .card__heading {
     color: ${(props) => props.theme.colors.green};
     margin-bottom: 1rem;
+    flex-grow: 1;
   }
 
   .card__subheading {

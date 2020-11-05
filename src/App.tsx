@@ -91,6 +91,7 @@ function App(): JSX.Element {
                   key && <Card townName={label} key={_} provinceName={key} />
               )}
             </CardsContainer>
+
             <SignOut auth={auth} />
           </>
         ) : (

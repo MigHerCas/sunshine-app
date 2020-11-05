@@ -93,6 +93,6 @@ export const Strong = styled.strong`
   color: ${(props) => props.theme.colors.black};
   text-align: center;
   font-weight: ${(props) => props.theme.fontWeight.semibold};
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   line-height: 53px;
 `;

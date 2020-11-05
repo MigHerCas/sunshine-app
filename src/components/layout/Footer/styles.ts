@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Footer = styled.footer`
   display: none;
-  position: absolute;
+  position: fixed;
   left: 50%;
   bottom: 0;
   transform: translateX(-50%);
