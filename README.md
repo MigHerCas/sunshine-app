@@ -1,6 +1,6 @@
-<h2 align="center">
+<h1 align="center">
   IOMED Sunshineapp
-</h2>
+</h1>
 
 React App written in Typescript that fetchs spanish towns list and allows to consult current that from a certain city or town.
 [IOMED](https://iomed.es/) assessment.
