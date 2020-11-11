@@ -1,26 +1,29 @@
 <h1 align="center">
-  IOMED Sunshineapp
+  IOMED Sunshine app
 </h1>
 
-React App written in Typescript that fetchs spanish towns list and allows to consult current that from a certain city or town.
+<img src="public/docs/desktop_login.png" />
+
+React app built in Typescript that allows user to fetch weather data.
 [IOMED](https://iomed.es/) assessment.
 
 ---
+Features
 
-What did I build this?
+1. **Stack.** Typescript, React, styled-components.
+2. **Interface.** Own [design](https://www.figma.com/file/L09AYG8lpH6giHCH1Mb4nC/sunshineapp) built with `figma`.
+3. **Firebase service:** Firebase user authentication.
 
-1. **To try to get a nice job.** Taking care of the react frontend part of a nice company is a dream for me.
-2. **Cutting edge techstack.** Typescript, React, styled-components.
-3. **Fresh design.** Own curated [design](https://www.figma.com/file/L09AYG8lpH6giHCH1Mb4nC/sunshineapp) built with `figma`.
-4. **Firebase learning.** The assessment requires user authentication. Firebase auth was my choice as I wanted to dive into this service for the first time.
-5. **Portfolio.** This helps me to show my skills with `palpable` content.
+<p align="center">
+  <img src="public/docs/mobile_main.png" />
+</p>
 
 
 ## Issues
 
-Api required for town list: [link](https://www.el-tiempo.net/api) doesn't work in neither of v1 or v2 while searching for an especific town. 
+[API](https://www.el-tiempo.net/api) doesn't work in neither of v1 or v2 while searching for an especific town. 
 
-> To fix this, I introduced OpenWeatherApi, which works flawlessly! 🚀
+> To fix this, I introduced OpenWeatherApi instead for consulting.
 
 
 Links:
