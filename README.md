@@ -52,10 +52,10 @@ yarn build
 
 As I've really enjoyed this project, I want to keep creating/improving some features:
 
-- [React Select](https://react-select.com/home) select instead of [EuiComboBox](https://elastic.github.io/eui/#/forms/combo-box).
-- Implement firestore workflow.
-- Improve design.
-- Deploy it.
+- [ ] [React Select](https://react-select.com/home) select instead of [EuiComboBox](https://elastic.github.io/eui/#/forms/combo-box).
+- [ ] Implement firestore workflow.
+- [ ] Improve design.
+- [ ] Deploy it.
 
 ## Author
 
